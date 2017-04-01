@@ -16,10 +16,69 @@ $\e = \vector{e}$
 Рассмотрим набор векторов\\
 $\e' = \vector{e'}$ такой что
 
-\begin{align}
+\[
+\tag{$\star$}
+\begin{aligned}
   & e_1' = e_1 \\
   & e_2' \in e_2 + \langle  e_{1} \rangle \\
   & e_3' \in e_3 + \langle  e_{1}, e_2 \rangle \\
   & \vdots \\
   & e_n' \in e_{n} + \langle  e_{1}, \ldots, e_{n - 1} \rangle
-\end{align}
+\end{aligned}
+\label{eqn}
+\]
+
+Для любого $k \in (1, \ldots, n)$ имеем $(e_1', \ldots, e_k') = (e_1, \ldots, e_k) \cdot  C_k$, где
+\[
+C_k = \begin{pmatrix}
+  1 & \star & \star & \star & \cdots & \star\\
+  0 & 1 & \star & \star & \cdots & \star\\
+  0 & 0 & 1 & \star & \cdots & \star \\
+  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+  \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & 0 & \cdots & 1
+\end{pmatrix}
+\in \mathrm{M}_k(\mathbb{F})\\
+\]
+$\det C_k = 1 \ne 0\ \Rightarrow (e_1', \ldots, e_k')$ линейно независимы $\Rightarrow$
+$\langle e_1, \ldots, e_k \rangle = \langle e_1', \ldots, e_k' \rangle$. В частности
+$\e'$ -- базис пространства $V$.
+
+Пусть $Q$ -- квадратичная форма \\
+$B = B(Q, \e)$ \\
+$B_k = B(Q, \e)$ -- левый верхний $k \times k$ блок в $B$\\
+$\sigma_k = \sigma_k(Q, \e) = \det B_k$ -- $k$-ый угловой минор матрицы $B$.
+
+Пусть $\e'$ -- базис $V$ удовлетворяющий условию \eqref{eqn} \\
+$B' = B(Q, \e')$ \\
+$B_k' = B_k(Q, \e')$ \\
+$\sigma_k' = \sigma_k(Q, \e')$
+
+\begin{Lemma}
+  Для любого $k \in (1, \ldots, n)$, $\sigma_k = \sigma_k'$
+  \begin{proof}
+    При любом $k$ имеем $B_k' = C_k^T \cdot B_k \cdot C_k \Rightarrow$ определитель $\sigma_k' = \det C_k^T \cdot B \cdot C_k = \det B_k = \sigma_k$и
+  \end{proof}
+\end{Lemma}
+\newpage
+\begin{Theorem}
+  (Метод Якоби приведения квадратичной формы к каноническому виду) Предположим, что $\sigma_k \neq 0 \forall k$, тогда существует единственный базис $\e' = \vector{e'}$ в $V$, такой что
+  \begin{enumerate}
+  \item $\e'$ имеет вид \eqref{eqn}
+    \item в этом базисе $Q$ имеет канонический вид
+  \end{enumerate}
+  $\displaystyle Q(x) = \sigma_k x_1'^2 + \frac{\sigma_2}{\sigma_1}x_2'^2 + \ldots + \frac{\sigma_n}{\sigma_{n - 1}}x_n'^2$ \\[10pt]
+  то есть $\displaystyle B(Q, \e') = \diag(\sigma_1, \frac{\sigma_2}{\sigma_1}, \ldots, \frac{\sigma_n}{\sigma_{n - 1}})$
+
+  \begin{proof}
+    Индукция по $n$: \\
+    $n = 1$ -- верно \\
+    Пусть доказано для $n - 1$ докажем для $n$ \\
+    Пусть векторы $e_1', \ldots, e_{n - 1}'$ уже построены
+    \[
+      B(Q, (e_1' \ldots, e_{n - 1}', e_n)) = 
+    \]
+  \end{proof}
+
+\end{Theorem}
+
