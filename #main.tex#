@@ -8,7 +8,7 @@
 \hypersetup{linkcolor=black}
 \tableofcontents
 }
-\newpage
+\newpageи
 \input{lectures/lecture21}
 
 \end{document}

@@ -26,6 +26,7 @@
 \usepackage{amstext}
 \usepackage{array}
 \usepackage{amsfonts}
+\usepackage{mathbbol}
 \usepackage{icomma}					% "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
 % \usepackage{bbm}				    % Для красивого (!) \mathbb с  буквами и цифрами
 \usepackage{enumitem}               % Для выравнивания itemise (\begin{itemize}[align=left])
@@ -54,17 +55,8 @@
 
 % Изменим формат \section и \subsection:
 \usepackage{titlesec}
-\titleformat{\section}
-{\vspace{1cm}\centering\LARGE\bfseries}	% Стиль заголовка
-{}										% префикс
-{0pt}									% Расстояние между префиксом и заголовком
-{} 										% Как отображается префикс
-\titleformat{\subsection}				% Аналогично для \subsection
-{\Large\bfseries}
-{}
-{0pt}
-{}
-
+\titleformat*{\section}
+{\bfseries\LARGE\raggedright}
 % Информация об авторах
 
 \title{Лекции по предмету \\

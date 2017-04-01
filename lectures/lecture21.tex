@@ -1,0 +1,25 @@
+\section*{Лекция 21}
+\addcontentsline{toc}{section}{\protect\numberline{}Лекция 21}%
+$V$ -- векторное пространство над $\mathbb{F}$ (в котором $1 + 1 \ne 0$) \\
+$\e = \vector{e}$ -- базис \\
+$Q: V \rightarrow \mathbb{F}$ -- квадратичная форма
+\begin{Def}
+  $Q$ имеет в базисе $\e$ канонический вид, если в этом базисе
+  \[
+    Q(x) = b_1x_1^2 + \ldots + b_nx_n^2,\ b_i \in \mathbb{F}
+  \]
+  (то есть матрица квадратичной формы $Q$ в этом базисе диагональна)  
+\end{Def}
+\subsection*{Метод Якоби}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Метод Якоби}%
+$\e = \vector{e}$
+Рассмотрим набор векторов\\
+$\e' = \vector{e'}$ такой что
+
+\begin{align}
+  & e_1' = e_1 \\
+  & e_2' \in e_2 + \langle  e_{1} \rangle \\
+  & e_3' \in e_3 + \langle  e_{1}, e_2 \rangle \\
+  & \vdots \\
+  & e_n' \in e_{n} + \langle  e_{1}, \ldots, e_{n - 1} \rangle
+\end{align}
