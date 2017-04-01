@@ -1,95 +1,73 @@
+%% Настройка поддержки русского языка
+\usepackage{cmap}                   % Поиск по кириллице
+\usepackage{mathtext}               % Кириллица в формулах
+\usepackage[T1,T2A]{fontenc}        % Кодировки шрифтов
+\usepackage[utf8]{inputenc}         % Кодировка текста
+\usepackage[english,russian]{babel} % Подключение поддержки языков
+ 
+%% Настройка размеров полей
+\usepackage[top=0.7in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
+ 
+%% Математические пакеты
+\usepackage{mathtools}              % Тот же amsmath, только с некоторыми поправками
+\usepackage{amssymb}                % Математические символы
+\usepackage{amsthm}                 % Оформление теорем
+\usepackage{amstext}                % Текстовые вставки в формулы
+\usepackage{amsfonts}               % Математические шрифты
+\usepackage{icomma}                 % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage{enumitem}               % Для выравнивания itemize (\begin{itemize}[align=left])
+\usepackage{array}                  % Таблицы и матрицы
+\usepackage{multirow}
+ 
+%% Алгоритмические пакеты и их настройки
+\usepackage{algorithm}              % Шапка алгоритма
+\usepackage{algorithmicx}           % Написание алгоритмов
+\usepackage[noend]{algpseudocode}   % Написание псевдокода; убраны end
+\usepackage{listings}               % Для кода на каком-либо языке программиования
+\renewcommand{\algorithmicrequire}{\textbf{Ввод:}}              % Ввод
+\renewcommand{\algorithmicensure}{\textbf{Вывод:}}              % Вывод
+\floatname{algorithm}{Алгоритм}                                 % Название алгоритма
+\renewcommand{\algorithmiccomment}[1]{\hspace*{\fill}\{// #1\}} % Комментарии
+\newcommand{\algname}[1]{\textsc{#1}}                           % Вызов функции в алгоритме
 
-%% Работа с русским языком
-\usepackage{cmap}					% поиск в PDF
-\usepackage{mathtext} 				% русские буквы в формулах
-\usepackage[T2A]{fontenc}			% кодировка
-\usepackage[utf8]{inputenc}			% кодировка исходного текста
-\usepackage[english,russian]{babel}	% локализация и переносы
-
-%% Отступы между абзацами и в начале абзаца 
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{\medskipamount}
-
-%% Изменяем размер полей
-\usepackage[top=0.5in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
-
-%% Графика
-\usepackage[pdftex]{graphicx}
-\graphicspath{{images/}}
-
-%% Различные пакеты для работы с математикой
-\usepackage{mathtools}				% Тот же amsmath, только с некоторыми поправками
-
-\usepackage{amssymb}				% Математические символы
-\usepackage{amsmath}        % Математические символы
-\usepackage{amsthm}					% Пакет для написания теорем
-\usepackage{amstext}
-\usepackage{array}
-\usepackage{amsfonts}
-\usepackage{icomma}					% "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
-% \usepackage{bbm}				    % Для красивого (!) \mathbb с  буквами и цифрами
-\usepackage{enumitem}               % Для выравнивания itemise (\begin{itemize}[align=left])
-
-% Номера формул
-\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
-
-% Ссылки
-\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
-
-% Шрифты
-\usepackage{euscript}	 % Шрифт Евклид
-\usepackage{mathrsfs}	 % Красивый матшрифт
-
-% Свои команды\textbf{}
-\DeclareMathOperator{\sgn}{\mathop{sgn}}
-
-% Перенос знаков в формулах (по Львовскому)
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}
 {\hbox{$\mathsurround=0pt #1$}}{}}
+ 
+%% Шрифты
+\usepackage{euscript}               % Шрифт Евклид
+\usepackage{mathrsfs}               % \mathscr{}
+ 
+%% Графика
+\usepackage[pdftex]{graphicx}       % Вставка картинок
+\graphicspath{{images/}}            % Стандартный путь к картинкам
+\usepackage{tikz}                   % Рисование всего
+\usepackage{pgfplots}               % Графики
+\usetikzlibrary{calc,matrix}
+ 
+%% Прочие пакеты
+\usepackage{indentfirst}                    % Красная строка в начале текста
+\usepackage{epigraph}                       % Эпиграфы
+\usepackage{fancybox,fancyhdr}              % Колонтитулы
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}   % Ссылки
+\usepackage{titlesec}                       % Изменение формата заголовков
+\usepackage[normalem]{ulem}                 % Для зачёркиваний
+\usepackage[makeroom]{cancel}               % И снова зачёркивание (на этот раз косое)
+ 
+%% Прочее
+\mathtoolsset{showonlyrefs=true}        % Показывать номера только у тех формул,
+                                        % на которые есть \eqref{} в тексте.
+\renewcommand{\headrulewidth}{1.8pt}    % Изменяем размер верхнего отступа колонтитула
+\renewcommand{\footrulewidth}{0.0pt}    % Изменяем размер нижнего отступа колонтитула
 
-% Графики
-\usepackage{tikz}
-\usepackage{pgfplots}
-%\pgfplotsset{compat=1.12}
-
-% Изменим формат \section и \subsection:
-\usepackage{titlesec}
-\titleformat{\section}
-{\vspace{1cm}\centering\LARGE\bfseries}	% Стиль заголовка
-{}										% префикс
-{0pt}									% Расстояние между префиксом и заголовком
-{} 										% Как отображается префикс
-\titleformat{\subsection}				% Аналогично для \subsection
-{\Large\bfseries}
-{}
-{0pt}
-{}
-
-% Информация об авторах
-
-\title{Лекции по предмету \\
-	Линейная алгебра и геометрия}
-\date{2017 год}
-
-\newtheorem*{Def}{Определение}
-\newtheorem*{Lemma}{Лемма}
-\newtheorem*{Suggestion}{Предложение}
-\newtheorem*{Examples}{Пример}
-\newtheorem*{Comment}{Замечание}
-\newtheorem*{Consequence}{Следствие}
-\newtheorem*{Theorem}{Теорема}
-\newtheorem*{Statement}{Утверждение}
-\newtheorem*{Task}{Упражнение}
-\newtheorem*{Designation}{Обозначение}
-\newtheorem*{Generalization}{Обобщение}
-\newtheorem*{Thedream}{Предел мечтаний}
-\newtheorem*{Properties}{Свойства}
+%Прочее
+\usepackage{forest} % Деревья
 
 \renewcommand{\Re}{\mathrm{Re\:}}
 \renewcommand{\Im}{\mathrm{Im\:}}
 \newcommand{\Arg}{\mathrm{Arg\:}}
 \renewcommand{\arg}{\mathrm{arg\:}}
 \newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\M}{\mathrm{M}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\isom}{\xrightarrow{\sim}} 
 \newcommand{\leftisom}{\xleftarrow{\sim}}
@@ -100,16 +78,72 @@
 \newcommand{\ort}{\mathrm{ort}}
 \newcommand{\pr}{\mathrm{pr}}
 \newcommand{\vol}{\mathrm{vol\:}}
-\def\limref#1#2{{#1}\negmedspace\mid_{#2}}
-\newcommand{\eps}{\varepsilon}
+\newcommand{\Tr}{\mathrm{tr\:}}
+\newcommand{\sgn}{\mathrm{sgn\:}}
 
+%% Определения
+\newtheorem{definition}{Определение}
+\newtheorem*{defin}{Определение}
+\newtheorem{Def}{Определение}
+\newtheorem*{Lemma}{Лемма}
+\newtheorem{Suggestion}{Предложение}
+\newtheorem*{Examples}{Пример}
+\newtheorem*{Consequence}{Следствие}
+\newtheorem{Theorem}{Теорема}
+\newtheorem{Statement}{Утверждение}
+\newtheorem*{Task}{Упражнение}
+\newtheorem*{Designation}{Обозначение}
+\newtheorem*{Generalization}{Обобщение}
+\newtheorem*{Thedream}{Предел мечтаний}
+\newtheorem*{Properties}{Свойства}
+\newtheorem*{Note}{Замечание}
+
+
+\newtheorem{fulllemma}{Лемма}
+\newtheorem*{sl1}{Следствие 1}
+\newtheorem*{sl2}{Следствие 2}
+\newtheorem*{scheme}{Утверждение 1}
+\newtheorem{theorem}{Теорема}
+\newtheorem{proposal}{Предложение}
+\newtheorem*{notice}{Замечание}
+\newtheorem{statement}{Утверждение}
+\newtheorem*{consequence}{Следствие}
+\newtheorem*{lemma}{Лемма}
+\newtheorem*{cauchy_inequality}{Неравенство Коши}
+\newtheorem*{triangle_inequality}{Неравенство треугольника}
+\newtheorem*{associativity_change}{Ассоциативность произведения подстановок}
+\newtheorem*{associativity}{Ассоциативность умножения}
+\newtheorem*{linear_determinant}{Теорема о полилинейной кососимметрической функции строк (столбцов) матрицы} 
+\newtheorem*{laplace_theorem}{Теорема Лапласа о разложении определителя по строке (столбцу)}
+\newtheorem*{fake-determinant}{Лемма о фальшивом разложении определителя}
+\newtheorem*{linear}{Основная лемма о линейной зависимости}
+\newtheorem*{solutions}{Теорема о размерности пространства решений однородной системы линейных уравнений}
+\newtheorem*{Kroneker}{Теорема Кронекера-Капелли}
+\newtheorem*{polycos}{Теорема о полилинейной кососимметрической функции строк}
+\newtheorem*{polycons}{Следствие (аксиоматическое определение определителя)}
+
+\newcommand{\note}{\underline{Замечание:} }
+\newcommand{\fact}{\underline{\textbf{Факт}:} }
+\newcommand{\example}{\underline{Пример:} }
+\newcommand{\sign}{\underline{Обозначения:} }
+\newcommand{\statements}{\underline{Утверждения:} }
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\renewcommand{\L}{\mathscr{L}}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
 \newcommand{\e}{\mathbb{e}}
 \renewcommand{\l}{\lambda}
-\renewcommand{\C}{\mathbb{C}}
-\newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
-
+\def\eps{\varepsilon}
+\def\limref#1#2{{#1}\negmedspace\mid_{#2}}
 \newcommand{\vvector}[1]{\begin{pmatrix}{#1}_1 \\\vdots\\{#1}_n\end{pmatrix}}
 \renewcommand{\vector}[1]{({#1}_1, \ldots, {#1}_n)}
+ 
+%% Информация об авторах
+\title{Линейная алгебра на ПМИ}
+\date{2017 год}
