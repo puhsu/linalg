@@ -76,9 +76,133 @@ $\sigma_k' = \sigma_k(Q, \e')$
     Пусть доказано для $n - 1$ докажем для $n$ \\
     Пусть векторы $e_1', \ldots, e_{n - 1}'$ уже построены
     \[
-      B(Q, (e_1' \ldots, e_{n - 1}', e_n)) = 
+    B(Q, (e_1' \ldots, e_{n - 1}', e_n)) =
+    \begin{pmatrix}
+      \sigma_1 & 0 & \cdots & \cdots & 0 & \star \\
+      0 & \frac{\sigma_2}{\sigma_1} & \cdots & \cdots & 0 & \vdots \\
+      0 & 0 & \ddots & \cdots & 0 & \vdots \\
+      \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+      \vdots & \vdots & \vdots & \vdots & \frac{\sigma_{n - 1}}{\sigma_{n - 2}} & \star \\
+      \star & \star & \star & \cdots & \star & \star
+    \end{pmatrix}
     \]
+    Ищем $e_n'$ в виде $e_n + \langle e_1, \ldots, e_{n - 1} \rangle = e_n + \langle e_1', \ldots, e_{n - 1}' \rangle$ то есть в виде
+    $e_n' = e_n + \lambda_1e_1' + \cdots + \lambda_{n - 1}e_{n - 1}'$.
+
+    Пусть $\beta: V \times V \rightarrow \mathbb{F}$ -- симметрическая билинейная форма, соответствующая $Q$.
+    \[
+    \beta(e_k', e_n') = \beta(e_k', e_n) + \lambda_1\beta(e_k', e_1') + \cdots + \lambda_{k - 1} \beta(e_k', e_{k - 1}')
+    \]
+    так как $\beta(e_i', e_j') = 0$ при $1 \leqslant i, j \leqslant n - 1, i \neq j$
+    \[
+    \beta(e_k', e_n') = \beta(e_k', e_n) + \lambda_k(e_k', e_k')
+    \]
+    Тогда $\beta(e_k', e_n') = 0\ \forall k = 1, \ldots, n - 1$ тогда и только тогда, когда $\displaystyle \lambda_k = -\frac{\beta(e_k', e_n)}{\beta(e_k', e_k')} = -\beta(e_k', e_n)~\cdot~\frac{\sigma_{k - 1}}{\sigma_k}$.
+
+    В итоге построен базис $\e' = \vector{e'}$ такой что
+    \[
+    B(Q, \e') = 
+    \begin{pmatrix}
+      \sigma_1 & 0 & \cdots & \cdots & 0 & 0 \\
+      0 & \frac{\sigma_2}{\sigma_1} & \cdots & \cdots & 0 & \vdots \\
+      0 & 0 & \ddots & \cdots & 0 & \vdots \\
+      \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+      \vdots & \vdots & \vdots & \vdots & \frac{\sigma_{n - 1}}{\sigma_{n - 2}} & 0 \\
+      0 & 0 & 0 & \cdots & 0 & ?
+    \end{pmatrix}
+    \]
+    В силу леммы $\displaystyle \sigma_n = \sigma_n' = \sigma_1 \cdot \frac{\sigma_2}{\sigma_1} \cdot \ldots \cdot \frac{\sigma_{n - 1}}{\sigma_{n - 2}} \cdot ? = \sigma_{n - 1} \cdot ? \Rightarrow ? = \frac{\sigma_n}{\sigma_{n - 1}}$.
   \end{proof}
 
 \end{Theorem}
 
+\begin{Comment}
+  Единственность следует из явных формул на каждом шаге.
+\end{Comment}
+
+\subsection*{Нормальный вид квадратичной формы над полем $\mathbb{R}$}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Нормальный вид квадратичной формы над $\mathbb{R}$}%
+
+\begin{Def}
+  Квадратичная форма $Q$ имеет в базисе $\e$ нормальный вид, если в этом базисе $Q(x) = b_1x_1^2 + \ldots + b_nx_n^2$, где $b_i \in \{-1, 0, 1\}$.
+\end{Def}
+
+\begin{Suggestion}
+  Для любой квадратичной формы $Q$ над полем $\R$ существует базис, в котором $Q$ принимает нормальный вид.
+  \begin{proof}
+    Существует базис, в котором $Q$ имеет канонический вид
+    \[
+    Q(x) = b_1x_1^2 + \ldots + b_nx_n^2
+    \]
+    Делаем невырожденную замену
+    \[
+    x_i =
+    \begin{cases}
+      \frac{x_i'}{\sqrt{|b_i|}}, &b_i \neq 0 \\
+      x_i', &b_i = 0
+    \end{cases}
+    \]
+    Тогда в новых координатах $Q$ имеет вид $Q(x) = \varepsilon_1 x_1'^2 + \ldots + \varepsilon_n x_n'^2$, где $\varepsilon_i = \sgn(b_i)$.
+  \end{proof}
+\end{Suggestion}
+
+\begin{Comment}
+  Если $F = \C$, то такое же рассуждение позволяет привести любую квадратичную форму над полем $\C$ к виду $x_1^2 + \ldots + x_k^2$, где $k = \rk Q$
+\end{Comment}
+
+\subsection*{Закон инерции}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Закон инерции}%
+
+Пусть $Q$ -- квадратичная форма над $\R$. Нормальный вид: $Q(x) = x_1^2 + \ldots + x_s^2 - x_{s+1}^2 - \ldots - x_{s + t}^2$. $s$ -- число <<$+$>> в нормальном виде, $t$ -- число <<$-$>> в нормальном виде.
+
+\begin{Def}
+  Число $i_+ = s$ --  положительный индекс инерции квадратичной формы $Q$.
+\end{Def}
+
+\begin{Def}
+  Число $i_- = t$ --  отрицательный индекс инерции квадратичной формы $Q$.
+\end{Def}
+
+\begin{Theorem}
+  Числа $i_+$ и $i_-$ не зависят от базиса в котором $Q$ принимает нормальный вид.
+  \begin{proof}
+    Имеем $i_+ + i_- = \rk Q$ -- инвариантная величина $\Rightarrow$ достаточно доказать инвариантность числа $i_+$.
+
+    Пусть базис $\e$ таков, что в нем $Q(x) = x_1 + \ldots + x_s^2 - x_{s + 1}^2 - \ldots - x_{s + t}^2$ и пусть $\e'$ -- другой базис такой что в нем $Q(x) = x_1^2 + \ldots + x_{s'}^2 - x_{s' + 1}^2 - \ldots - x_{s' + t'}^2$.
+
+    Предположим, что $s \neq s'$, тогда без ограничения общности $s > s'$. Рассмотрим в $V$ подпространства $L = \langle e_1, \ldots, e_s \rangle$ и $L' = \langle e'_{s' + 1}, \ldots, e'_n \rangle$. $\dim L = s$ и $\dim L' = n - s'$. $L + L'$ -- подпространство в $V \Rightarrow \dim(L + L') \leqslant \dim V = n$. Тогда $\dim(L \cap L') = \dim L + \dim L' - \dim(L + L') \geqslant s + n - s' - n = s - s' > 0$. Тогда существует $v \in L \cap L', v \neq 0$. Так как $v \in L$, то $Q(v) > 0$, но так как $v \in L'$, то $Q(v) \leqslant 0$ -- противоречие.
+  \end{proof}
+\end{Theorem}
+
+\begin{Def}
+Квадратичная функция $Q$ над полем $\R$ называется
+\begin{center}
+\begin{tabular}{c|c|c}
+Термин                      & Обозначение     & Условие \\ \hline
+положительно определенной   & $Q > 0$         & $Q(x) > 0\ \forall x \neq 0$ \\
+отрицательно определенной   & $Q < 0$         & $Q(x) < 0\ \forall x \neq 0$ \\
+неотрицательно определенной & $Q \geqslant 0$ & $Q(x) \geqslant 0\ \forall x$ \\
+неположительно определенной & $Q \leqslant 0$ & $Q(x) \leqslant 0\ \forall x$ \\
+неопределенной              & $-$             & $\exists x, y \colon Q(x) > 0,\ Q(y) < 0$
+\end{tabular}
+
+\begin{tabular}{c|c|c}
+Термин                      & Нормальный вид                                                      & Индексы инерции \\ \hline
+положительно определенной   & $x_1^2 + \ldots + x_n^2$                                            & $i_+=n,\ i_- = 0$ \\
+отрицательно определенной   & $-x_1^2 - \ldots - x_n^2$                                           & $i_+=0,\ i_-=n$ \\
+неотрицательно определенной & $x_1^2 + \ldots + x_k^2,\ k \leqslant n$                            & $i_+=k,\ i_-=0$ \\
+неположительно определенной & $-x_1^2 - \ldots - x_k^2,\ k \leqslant n$                           & $i_+=0, i_-=k$ \\
+неопределенной              & $x_1^2+\ldots+x_s^2-x_{s + 1}^2-\ldots-x_{s + t}^2,\ s,t\geqslant1$ & $i_+=s,\ i_-=t$
+\end{tabular}
+\end{center}
+\end{Def}
+
+\begin{Examples} $V = \R^2$.
+\begin{enumerate}
+\item $Q(x, y) = x^2 + y^2,\ Q > 0$;
+\item $Q(x, y) = - x^2 - y^2,\ Q < 0$;
+\item $Q(x, y) = x^2 - y^2$;
+\item $Q(x, y) = x^2,\ Q \geqslant 0$;
+\item $Q(x, y) = -x^2,\ Q \leqslant 0$.
+\end{enumerate}
+\end{Examples}
