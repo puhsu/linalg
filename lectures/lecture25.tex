@@ -1,0 +1,183 @@
+\section*{Лекция 25}
+\addcontentsline{toc}{section}{\protect\numberline{}Лекция 25}%
+
+$\E$ -- евклидово пространство. $\e, \e'$ -- два базиса. $\e' = \e C$, $\e$ и $\e'$ одинаково ориентированы, если $\det C > 0$. Одинаковая ориентированность -- отношение эквивалентности на множестве всех базисов в $\E$.
+
+Фиксируем $\e$:
+\begin{itemize}
+  \item все $\e'$ для которых $\det C > 0$ -- один класс
+  \item все $\e'$ для которых $\det C < 0$ -- второй класс
+\end{itemize}
+
+Значит всего два класса эквивалентности.
+
+\begin{Def}
+  Говорят, что в $\E$ зафиксирована ориентация, если все базисы одного класса объявлены положительно ориентированными, а все базисы второго класса трицательно ориентированными.
+\end{Def}
+
+\begin{Examples}
+  В $\R^3$ есть стандартный выбор ориентации:
+  \begin{itemize}
+    \item положительная ориентация -- <<правые>> базисы % + картинка
+    \item отрицательная ориентация -- <<левые>> базисы
+  \end{itemize}
+\end{Examples}
+
+\subsection*{Ориентированный объём}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Ориентированный объём}%
+Фиксруем ориентацию в $\E$, $\dim \E = n$
+\begin{align}
+  &a_1, \ldots, a_n \in \E \text{ -- набор векторов } \\
+  &\mathrm{Vol\ P}(a_1, \ldots, a_n) \text{ -- объём } \\
+  &\vector{e} \text{ -- положительно ориентированный ортонормированный базис } \\
+  &\vector{a} = \vector{e} A \\
+  &\mathrm{Vol\ P}(a_1, \ldots, a_n) = |\det A|
+\end{align}
+
+\begin{Def}
+  Ориентированным объёмом параллелипипеда $\mathrm{P}(a_1, \ldots, a_n)$ называется величина $\mathrm{Vol}(a_1, \ldots, a_n) = \det A$.
+  \begin{Properties}\leavevmode
+    \begin{enumerate}
+      \item $|\mathrm{Vol}(a_1, \ldots, a_n)| = \mathrm{Vol\ P}(a_1, \ldots, a_n)$
+      \item $\mathrm{Vol}(a_1, \ldots, a_n) > 0 \iff (a_1, \ldots, a_n)$ -- положительно ориентированный базис
+      \item Линейность по каждому аргументу
+      \item Кососимметричность -- меняет знак при перестановке любых двух аргументов
+    \end{enumerate}
+  \end{Properties}
+\end{Def}
+
+\subsection*{Трёхмерное евклидово пространство}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Трёхмерное евклидово пространство}%
+$\E = \R^3$ -- евклидово пространство со стандартным скалярным произведением. Фиксируем ориентацию (как в примере положительная ориентация $\sim$ <<правые базисы>>), $a, b, c \in \R^3$.
+
+\begin{Def}
+  Смешанным произведением векторов $a, b, c$ называется величина $(a, b, c) := \mathrm{Vol}(a, b, c)$.
+\end{Def}
+
+\begin{Properties}\leavevmode
+  \begin{enumerate}
+    \item Линейна по каждому аргументу
+    \item Кососимметрична
+  \end{enumerate}
+\end{Properties}
+
+Если $(e_1, e_2, e_3)$ -- правый ортонормированный базис и:
+\begin{align}
+  &a = a_1 e_1 + a_2 e_2 + a_3 e_3\\
+  &b = b_1 e_1 + b_2 e_2 + b_3 e_3\\
+  &c = c_1 e_1 + c_2 e_2 + c_3 e_3
+\end{align}
+То
+\[
+(a, b, c) = \left| \begin{array}{ccc}
+  a_1 & a_2 & a_3 \\
+  b_1 & b_2 & b_3 \\
+  c_1 & c_2 & c_3
+  \end{array}\right|
+\]
+
+Критерий комплонарности (линейной зависимости трёх векторов): $(a, b, c) = 0 \iff a, b, c \text{комплонарны}$.
+
+\begin{Def}
+  Векторным произведением векторов $a, b \in \E$ называется вектор $c$, такой что
+  \begin{enumerate}
+    \item $c \perp \langle a, b \rangle$
+    \item $|c| = \mathrm{Vol\ P}(a, b)$
+    \item $(a, b, c) \geqslant 0$
+  \end{enumerate}
+  \begin{Designation}
+    $[a, b]$ или $a \times b$.
+  \end{Designation}
+\end{Def}
+
+\begin{Comment}
+  Векторное произведение условиями $1) - 3)$ определено однозначно
+  \begin{enumerate}
+    \item $a, b$ линейно зависимы. Тогда из $2)$ получаем, что $|c| = 0 \Rightarrow c = 0$, при этом $1)$ и $3)$ выполнены.
+    \item $a, b$ линейно независимы. В данном случае $(a, b, c) > 0 \iff $ тройка $a, b, c$ является правой (+ нужна картинка)
+  \end{enumerate}
+\end{Comment}
+
+Критерий коллинеарности (линейной зависимости двух векторов): $[a, b] = 0 \iff a, b\ \text{коллинеарны}$.
+
+\begin{Examples}
+  $(e_1, e_2, e_3)$ -- правый ортонормированный базис
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{l|l|l|l|l}
+     $[e_i, e_j]$ & $e_1$ & $e_2$  & $e_3$   \\ \hline
+      $e_1$       & $0$                        & $e_3$  & $-e_2$  \\ \hline
+      $e_2$       & $-e_3$                     & $0$    & $e_1$   \\ \hline
+      $e_3$       & $e_2$                      & $-e_1$ & $0$
+    \end{tabular}
+  \end{table}
+\end{Examples}
+
+\begin{Theorem}
+  $\forall\ a, b, c \in \R^3 (a, [b, c]) = (a, b, c)$.
+  \begin{proof}\leavevmode
+    \begin{enumerate}
+      \item Пусть $b, c$ пропорциональны, тогда $[b, c] = 0 \Rightarrow (a, [b, c]) = 0)$, но $(a, b, c)$ тоже равна нулю
+      \item $b, c$ не пропорциональны, тогда положим $d = [b, c]$. $(a, [b, c]) = (a, d) = (\pr_{\langle d \rangle} a, d) = (\ort_{\langle b, c \rangle} a, d) = \begin{cases} |\ort_{\langle b, c \rangle} a| \cdot |d|, &\text{если } (a, b, c) > 0 \\ -|\ort_{\langle b, c \rangle} a| \cdot |d|, &\text{если } (a, b, c) < 0 \end{cases} = \mathrm{Vol}(a, b, c) = (a, b, c)$.
+    \end{enumerate}
+  \end{proof}
+\end{Theorem}
+
+\begin{Suggestion}\leavevmode
+  \begin{enumerate}
+    \item $[a, b] = -[b, a]\ \forall\ a, b$.
+    \item $[\cdot, \cdot]$ линейно по каждому аргументу.
+  \end{enumerate}
+  \begin{proof}\leavevmode
+    \begin{enumerate}
+      \item Ясно из определения
+      \item Для каждого $x$: $(x, [\lambda_1 a_1 + \lambda_2 a_2, b] = (x, \lambda_1 a_1 + \lambda_2 a_2, b) = \lambda_1(x, a_1, b) + \lambda_2(x, a_2, b) = \lambda_1(x, [a_1, b]) + \lambda_2(x, [a_2, b]) = (x, \lambda_1[a_1, b] + \lambda_2[a_2, b])$. Так всякий вектор $y = (e_1, y)e_1 + (e_2, y)e_2 + (e_3, y)e_3$, для $(e_1, e_2, e_3)$ ортонормированного базиса, то $[\lambda_1 a_1 + \lambda_2 a_2, b] = \lambda_1[a_1, b] + \lambda_2[a_2, b]$. Линейность по второму аргументу аналогично.
+    \end{enumerate}
+  \end{proof}
+\end{Suggestion}
+
+\subsection*{Двойное векторное произведение}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Двойное векторное произведение}%
+
+\begin{Suggestion}
+  $[a, [b, c]] = (a, c)b - (a, b)c$ ($= b(a, c) - c(a, b)$ <<БАЦ - ЦАБ>>)
+  \begin{proof}\leavevmode
+    \begin{enumerate}
+      \item $b, c$ пропорциональны, тогда $c = \lambda b$, $[a, [b, c]] = 0$, а правая часть равна $(a, \lambda b)b - (a, b)\lambda b = 0$
+      \item $b, c$ не пропорциональны. Выберем правый ортонормированный базис $e_1, e_2, e_3$ так, чтобы:
+        \begin{enumerate}
+          \item $b$ был пропорционален $e_1$
+          \item $\langle b, c \rangle  = \langle e_1, e_2 \rangle$
+        \end{enumerate}
+        Тогда $b = \beta e_1$, $c = \upgamma_1 e_1 + \upgamma_2 e_2$, $a = \alpha_1 e_1 + \alpha_2 e_2 + \alpha_3 e_3$. $[b, c] = [\beta e_1, \upgamma_1 e_1 + \upgamma_2 e_2] = \beta \upgamma_2 e_3$. Тогда $[a, [b, c]] = [\alpha_1 e_1 + \alpha_2 e_2 + \alpha_3 e_3, \beta \upgamma_2 e_3] = -\alpha_1 \beta \upgamma_2 e_2 + \alpha_2 \beta \upgamma_2 e_1$. Правая часть равна $(\alpha \upgamma_2 + \alpha_2 \upgamma_2)\beta e_1 - \alpha_1 \beta(\upgamma_1 e_1 + \upgamma_2 e_2) = -\alpha_1 \beta \upgamma_2 e_2 + \alpha_2 \beta \upgamma_2 e_1 = $ левая часть.
+    \end{enumerate}
+  \end{proof}
+\end{Suggestion}
+
+\begin{Consequence} (Тождество Якоби)
+  $[a, [b, c]] + [b, [c, a]] + [c, [a, b]] = 0\ \forall\ a, b, c \in \R^3$.
+\end{Consequence}
+
+Пусть $(e_1, e_2, e_3)$ -- правый ортонормированный базис.
+\begin{align}
+  &a = a_1e_1 + a_2e_2 + a_3e_3 \\
+  &b = b_1e_1 + b_2e_2 + b_3e_3
+\end{align}
+
+\begin{Suggestion}
+Векторное произведение можно найти следующим образом:
+\[
+  [a,b] =
+  \left|
+  \begin{array}{ccc}
+    e_1 & e_2 & e_3 \\
+    a_1 & a_2 & a_3 \\
+    b_1 & b_2 & b_3
+  \end{array}
+  \right|
+  = (a_2b_3 - a_3b_2)e_1 + (a_3b_1 - a_1b_3)e_2 + (a_1b_2 - a_2b_1)e_3
+\]
+\begin{proof}
+  Доказывается прямой проверкой с использованием билинейности и значений $[e_i, e_j]$.
+\end{proof}
+\end{Suggestion}
