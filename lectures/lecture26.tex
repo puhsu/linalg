@@ -1,0 +1,225 @@
+\section*{Лекция 26}
+\addcontentsline{toc}{section}{\protect\numberline{}Лекция 26}%
+\subsection*{Линейные многообразия и аффинные системы координат}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Линейные многообразия}%
+\raggedright{ СЛУ $Ax = b,~ x \in \R^n$} \\
+Пусть система совместна и $x_\text{ч}$ -- частное решение. \\
+$L \subseteq \R^n$ -- множество всех решений. \\ 
+$\Rightarrow L = x_\text{ч} + S$, где $S \subseteq \R^n$ -- множество решений однородной СЛУ $Ax = 0 (*)$ // Сделать звёздочку активной
+
+\begin{Def}
+	Линейное многообразие в $\R^n$ -- это множество решений некоторой совместной СЛУ.
+\end{Def}
+
+Примеры:
+\begin{itemize}
+    \item $ax+by=c$ 
+    
+    $\begin{pmatrix}
+    \frac c a \\ 0
+    \end{pmatrix} + \lambda
+    \begin{pmatrix}
+    1 \\ \frac b a
+    \end{pmatrix}$ --- прямая в $\mathbb{R}^2$
+    \item $ax+by+cz=d$ --- задаёт плоскость в $\mathbb{R}^3$
+    \item $\begin{cases}
+            a_1x+b_1y+c_1z=d_1\\
+            a_2x+b_2y+c_2z=d_2
+        \end{cases}$--- задаёт прямую (пересечение плоскостей) в $\mathbb{R}^3$
+\end{itemize}
+
+\begin{Suggestion}
+	$L \subseteq \R^n$ -- непустое множество $\Rightarrow L$ -- линейное многообразие $\Leftrightarrow L = v_0 + S$ для некоторых $v_0 \in L$
+	 и подпространства $S \subseteq \R^n$.  
+\end{Suggestion}
+\begin{proof}
+	Докажем в обе стороны:
+	\begin{enumerate}
+		\item[{$[\Rightarrow]$}] Прямое следствие из $(*)$. \\
+		\item[{$[\Leftarrow]$}] $L = v_0 + S$. Так как $S$ -- подпространство, то $\exists$ ОСЛУ $Ax = 0$, такое что $S$ есть её множество решений. Тогда
+		$v_0$ есть частное решение СЛУ $Ax = Av_0$, следовательно $L$ является множеством решений  СЛУ $Ax = Av_0$.
+	\end{enumerate}
+\end{proof}
+
+Пусть $L_1 = v_1 + S_1$ и $L_2 = v_2 + S_2$ -- два линейных многообразия.
+\begin{Suggestion}
+	$L_1 = L_2 \Leftrightarrow 
+	\begin{cases}
+		S_1 = S_2 ~ (= S) \\
+		v_1 - v_2 \in S
+	\end{cases}$ 
+\end{Suggestion}
+\begin{proof}
+	Докажем в обе стороны:
+	\begin{enumerate}
+		\item[{$[\Leftarrow]$}] Очевидно, исходя из теоретико-множественных соображений.
+		\item[{$[\Rightarrow]$}] $v_1 = v_1 + 0 \in v_2 + S_2 \Rightarrow v_1 - v_2 \in S_2$. Аналогично показывается $v_1 - v_2 \in S_2$ $\Rightarrow v_1 - v_2 \in 
+		S_1 \cap S_2$. \\
+		$v \in S_1 \Rightarrow v_1 + v \in v_2  S_2 \Rightarrow v \in (v_2 - v_1) + S_2 \subseteq S_2 \Rightarrow S_1 \subseteq S_2$. Аналогично доказывается
+		$S_2 \subseteq S_1$ \\
+		$\Rightarrow S_1 = S_2 ~ (= S)$ и $v_1 - v_2 \in S$. 
+	\end{enumerate}
+\end{proof}
+\begin{Consequence}
+	Если $L = v_0 + S$ -- линейное многообразие, то подпространство $S$ определено однозначно.
+\end{Consequence}
+
+\begin{Def}
+	$S$ называется направляющим подпространством линейного многообразия $L$.
+\end{Def}
+
+\begin{Def}
+	Размерностью линейного многообразия $L$ называется размерность направляющего подпространства.
+\end{Def}
+
+Пусть $n$ -- размерность, тогда линейное мнообразие размерности
+\begin{enumerate}[label=•]
+	\item 0 -- точка
+	\item 1 -- прямая
+	\item 2 -- плоскость
+	\item {$k$} -- $k$-мерная плоскость
+	\item {${n-1}$} -- гиперплоскость \\
+\end{enumerate}
+
+$L$ -- линейное многообразие с направляющим подпространством $S$, $k = \dim L = \dim S .$
+\begin{Def}
+	Набор $(v_0, e_1, \ldots, e_k)$,  где $v_0 \in L$ и $(e_1, \ldots, e_k)$ -- базис в $S$, называется репéром.
+\end{Def}
+
+Всякий репер задаёт аффинную систему координат на $L$. \\
+$L = v_0 + S \Rightarrow \forall ~ v \in L$ однозначно представим в виде $v = v_0 + \alpha_1 e_1 + \ldots \alpha_k e_k$.
+Числа $\alpha_1, \ldots \alpha_k$ называются координатами точки $v$ в данной аффинной системе координат(или по
+отношению к данному реперу).
+
+\begin{theorem}
+	\begin{enumerate}
+		\item[{а)}] Через любые $k + 1$ точки в $\R^n$ проходит плоскость размерности $\leq k$.
+		\item[{б)}] Если $k + 1$ точек не лежат в плоскости размерности, то через них проходит ровно одна плоскость размерности $k$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item[{а)}] Пусть $v_0, v_1, \ldots, v_k$ -- наши точки. Тогда они все лежат в плоскости 
+						$P = v_0 + \langle v_1 - v_0, v_2 - v_0, \ldots, v_k - v_0 \rangle \Rightarrow \dim P = \dim S \leq k$ .
+		\item[{б)}] В этом случае $\dim P = k \Rightarrow \dim S = k \Rightarrow v_1 - v_0, \ldots v_k - v_0$ -- линейно независимы.
+						$v_1 - v_0, \ldots v_k - v_0$ лежат в направляющем подпространстве любой плоскости, проходящий через
+						$v_0, v_1, \dots, v_k$. $\Rightarrow P$ -- единственная плоскость размерности $k$ с требуемым свойством.
+						(Более строгое доказательство единственности можно построить, предположив, что существует другая плоскость,
+						проходящая через те же точки и далее прийти к противоречию с помощью предложения $2$).
+	\end{enumerate}
+\end{proof}
+
+\begin{sl1}
+	Через любые  $2$ различные точки проходит ровно $1$ прямая.
+\end{sl1}
+\begin{sl2}
+	Через любые $3$ точки, нележащие на одной прямой прямой, проходит ровно $1$ плоскость.
+\end{sl2}
+
+\subsection*{Взаимное расположение двух линейных многообразий}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Взаимное расположение двух линейных многообразий}%
+\begin{Note}
+	$L_1, L_2$ -- линейное многообразие и $L_1 \cap L_2 \neq \varnothing$, то $L_1 \cap L_2$ -- линейное многообразие.
+\end{Note}
+\begin{tabular}{l | l}
+$L_1 \cap L_2 \neq \varnothing$ & $L_1 \cap L_2 = \varnothing$ \\ \hline
+$1) ~ L_1 = L_2$ совпадают $(L_1 = L_2 \Leftrightarrow S_1 = S_2)$ & $1) ~ L_1$ параллельно $L_2 \xLeftrightarrow{\text{def}} 
+																														S_1 \subseteq S_2$  или $S_2 \subseteq S_1$ \\
+$2) ~ L_1 \subseteq L_2 \Leftrightarrow S_1 \subseteq S_2$	& $2) ~ L_1$ и $L_2$ скрещиваются $\xLeftrightarrow{\text{def}}
+																														S_1 \cap S_2 = \{ 0 \}$ \\
+$3)$ Остальное	 &	$3)$ Остальное
+\end{tabular}
+
+\subsection*{Линейные многообразия в $\R^2$}
+Нетривиальный случай $\dim = 1$(прямая) \\ 
+Способы задания:
+\begin{enumerate}
+	\item Уравнение в координатах:
+			$$Ax + By + C = 0, ~ (A, B) \neq (0, 0)$$
+	\item Векторное уравнение через вектор нормали:
+			$$(n, v - v_0) = 0$$
+	\item Параметрическое уравнение в векторном виде:
+			$$v = v_0 + at$$ где $a = (a_1, a_2)$ -- напрявляющий вектор, $v_0 = (x_0 , y_0)$ -- фикисированная точка на прямой. \\ 
+			То же уравнение в скалярном виде:
+			$$\begin{cases}
+					x = x_0 + a_1t \\
+					y = y_0 + a_2t
+				\end{cases}$$
+	\item Матричная форма:
+			\[		
+			\begin{vmatrix}
+				x - x_0     & y - y_0 \\
+				x_1 - x_0 & y_1 - y_0
+			\end{vmatrix}
+			= 0
+			\]
+\end{enumerate}
+
+\subsection*{Линейные многообразия в $\R^3$}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Линейные многообразия в $\R^3$}%
+\begin{enumerate}
+	\item $\dim = 1$(прямые в $\R^3$) \\
+	Способы задания:
+	\begin{enumerate}[label={1.\arabic*)}]
+		\item Система линейных уравнений:
+				\[
+				\begin{cases}
+				A_1x + B_1y + C_1z + D_1 = 0 \\
+				A_2x + B_2y + C_2z + D_2 = 0
+				\end{cases}
+				\]
+				Причем,
+				$
+				rk \begin{pmatrix}
+							A_1 & B_1 & C_1 \\
+							A_2 & B_2 & C_2 \\
+						\end{pmatrix} 
+					= 2
+				$
+		
+		\item Векторное уравнение:
+				$$[v - v_0, a] = 0$$ где $a$ -- направляющий вектор.
+		\item Параметрическое уравнение в векторном виде:
+				$$v = v_0 + at$$ где $a = (a_1, a_2, a_3)$ -- напрявляющие векторы, 
+				$v_0 = (x_0 , y_0, z_0)$ -- фиксированная точка на плоскости. \\ 
+				То же уравнение в скалярном виде:
+				$$\begin{cases}
+						x = x_0 + a_1t \\
+						y = y_0 + a_2t \\
+						z = z_0 + a_3t
+					\end{cases}$$
+		\item Каноническое уравнение:
+				$$\frac{x - x_0}{a_1} = \frac{y - y_0}{a_2} = \frac{z - z_0}{a_3}$$
+				Если $a_1 = 0$, то вместо $\displaystyle{\frac{x - x_0}{a_1}}$ пишут уравнение $x = x_0$. Аналогично для $a_2$ и $a_3$.
+				
+		\item Прямая, проходящая через две различных точки $(x_0, y_0, z_0), (x_1, y_1, z_1)$.
+				$$\frac{x - x_0}{x_1 - x_0} = \frac{y - y_0}{y_1 - y_0} = \frac{z - z_0}{z_1 - z_0}$$
+	\end{enumerate}
+
+	\item $\dim = 2$(плоскость) \\
+	Способы задания:
+	\begin{enumerate}[label={2.\arabic*)}]
+		\item Уравнение в координатах:
+				$$Ax + By + Cz + D = 0, ~ (A, B, C) \neq (0, 0, 0)$$
+		\item Векторное уравнение через вектор нормали:
+				$$(n, v - v_0) = 0$$
+		\item Параметрическое уравнение в векторном виде:
+				$$v = v_0 + at + bu$$ где $a = (a_1, a_2, a_3), b = (b_1, b_2, b_3)$ -- напрявляющие векторы, 
+				$v_0 = (x_0 , y_0, z_0)$ -- фиксированная точка на плоскости. \\ 
+				То же уравнение в скалярном виде:
+				$$\begin{cases}
+						x = x_0 + a_1t + b_1u\\
+						y = y_0 + a_2t + b_2u \\
+						z = z_0 + a_3t + b_3u
+					\end{cases}$$
+		\item Матричная форма:
+				\[		
+				\begin{vmatrix}
+					x - x_0     & y - y_0 	& z - z_0 \\
+					x_1 - x_0 & y_1 - y_0 	& z_1 - z_0 \\
+					x_2 - x_0 & y_2 - y_0 & z_2 - z_0
+				\end{vmatrix}
+				= 0
+				\]
+	\end{enumerate}
+\end{enumerate}
