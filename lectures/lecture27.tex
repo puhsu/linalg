@@ -1,2 +1,161 @@
 \section*{Лекция 27}
 \addcontentsline{toc}{section}{\protect\numberline{}Лекция 27}%
+\subsection*{Взаимное расположение двух плоскостей в $\R^3$}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Взаимное расположение двух плоскостей в $\R^3$}%
+\begin{enumerate}
+  \item Совпадают
+  \item Параллельны
+  \item Пересекаются по прямой $[n_1, n_2] = 0$
+\end{enumerate}
+\subsection*{Взаимное расположение двух прямых в $\R^3$}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Взаимное расположение двух прямых в $\R^3$}%
+\begin{enumerate}
+  \item Совпадают
+  \item Параллельны
+  \item Пересекаются
+  \item Скрещиваются (не лежат в одной плоскости)
+\end{enumerate}
+\subsection*{Взаимное расположение прямой и плоскости в $\R^3$}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Взаимное расположение прямой и плоскости в $\R^3$}%
+\begin{enumerate}
+  \item $l \subseteq P$
+  \item $l || P$
+  \item $l$ и $P$ пересекаются в точке
+\end{enumerate}
+\subsection*{Взаимное расположение трёх различных плоскостей}
+\begin{enumerate}
+\item Среди $P_1, P_2, P_3$ есть две параллельных
+  \begin{enumerate}
+    \item $P_1 \parallel P_2 \parallel P_3$
+    \item Две параллельны, третья их 
+  \end{enumerate}
+\item Никакие две не параллельны
+  \begin{enumerate}
+    \item Все три пересекаются по одной прямой
+    \item Прямые пересечения параллельны
+    \item $P_1, P_2, P_3$ пересекаются в одной точке
+  \end{enumerate}
+\end{enumerate}
+\subsection*{Метрические задачи в $\R^3$}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Метрические задачи в $\R^3$}%
+\subsubsection*{Расстояние от точки до прямой}
+\[
+\rho(v, l) = |\ort_{\langle a \rangle}(v - v_0)| = \frac{|[v - v_0, a]|}{|a|}
+\]
+\subsubsection*{Расстояние от точки до плоскости}
+$S = \langle n \rangle^{\perp}$ -- направляющее подпространство.
+\[
+\rho(v, P) = |\ort_{S}(v - v_0)| = |\pr_{\langle n \rangle}(v - v_0)| = \frac{|(v - v_0, n)|}{(n, n)}\cdot n
+\]
+\subsubsection*{Расстояние между скрещивающимися прямыми}
+$P_1 = v_1 + \langle a_1, a_2 \rangle \supseteq l_1$, $P_2 = v_2 + \langle a_1, a_2 \rangle \supseteq l_2$
+\[
+\rho(l_1, l_2) = \rho(P_1, P_2) = \frac{|(a_1, a_2, v_2 - v_1)|}{|[a_1, a_2]|}
+\]
+\subsubsection*{Угол между двумя прямыми}
+\[
+\angle(l_1, l_2) = \min(\angle(a_1, a_2), \angle(a_1, -a_2))
+\]
+\subsubsection*{Угол между плоскостью и прямой}
+\[
+\angle(l, P) = \frac{\pi}{2} - \angle(\langle a \rangle, \langle n \rangle)
+\]
+\subsubsection*{Угол между двумя плоскостями}
+\[
+\angle(P_1, P_2) = \angle(\langle n_1 \rangle, \langle n_2 \rangle)
+\]
+
+\subsection*{Линейные операторы}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Линейные операторы}%
+Пусть $V$ --- конечномерное векторное пространство.
+
+\begin{Def}
+    Линейным оператором (или линейным преобразованием) называется всякое линейное отображение $\phi \colon V \rightarrow V$, то есть из $V$ в себя. Обозначение: $L(V) = \Hom(V, V)$, $A(\phi, \e)$ -- матрица линейного оператора $\phi$ в базисе $\e$.
+\end{Def}
+
+\par Пусть $\mathbb{e} = (e_1, \ldots, e_n)$ --- базис в $V$ и $\phi \in L(V)$. Тогда:
+$$
+\left(\phi(e_1), \ldots, \phi(e_n)\right) = \left(e_1, \ldots, e_n\right)A,
+$$
+где $A$ --- матрица линейного оператора в базисе $\mathbb{e}$. В столбце $A^{\left( j\right)}$ стоят координаты $\phi(e_j)$ в базисе $\mathbb{e}$. Матрица $A$ --- квадратная. 
+\begin{Examples}\
+    \begin{enumerate}
+        \item Скалярный оператор $\lambda \id(v) = \lambda V$ --- матрица $\lambda E$ в любом базисе.
+        \item $\forall v \in V : \phi(v) = 0$ --- нулевая матрица.
+        \item Тождественный оператор: $\forall v \in V : \id(v) = v$ --- единичная матрица.
+        \item $V = \R^2$, $\phi$ -- поворот на угол $\alpha$
+        \item $V = \R[x]_{\leqslant n}$, $\phi: f \mapsto f'$
+    \end{enumerate}
+\end{Examples}
+
+\begin{Consequence}[Следствия из общих фактов о линейных отображениях]\
+    \begin{enumerate}
+        \item Всякий линейный оператор однозначно определяется своей матрицей в любом фиксированном базисе.
+        \item Для всякого базиса $\e$ и всякой квадратной матрицы $A$ существует, причем единственный, линейный оператор $\phi$ такой, что матрица $\phi$ в базисе $\e$ есть $A$.
+        \item Пусть $\phi \in L(V)$, $A$ --- матрица $\phi$ в базисе $\mathbb{e}$. Тогда:
+        \begin{gather*}
+            v = x_1e_1 + \ldots + x_ne_n\\ \phi(v) = y_1e_1 + \ldots + y_n e_n \\
+            \begin{pmatrix}
+                y_1\\
+                \vdots \\
+                y_n
+            \end{pmatrix} = A \begin{pmatrix}
+                x_1\\
+                \vdots \\
+                x_n
+            \end{pmatrix}
+        \end{gather*}
+        \item Пусть $\e' = (e_1', \ldots, e_n')$ -- другой базис, $\e' = \e\cdot C$, $A' = A(\phi, \e')$, тогда $A' = C^{-1}AC$
+    \end{enumerate}
+\end{Consequence}
+
+\begin{Consequence}\
+  \begin{enumerate}
+    \item Величина $\det A$ не зависит от выбора базиса. Обозначение: $\det\phi$.
+    \item Величина $\tr A$ не зависит от выбора базиса
+  \end{enumerate}
+\end{Consequence}
+
+\begin{proof}\
+  Пусть $A'$ --- матрица $\phi$ в другом базисе. Тогда получается, что:
+  \begin{enumerate}
+    \item 
+    \begin{gather*}
+        \det A' = \det \left(C^{-1}AC\right) = \det C^{-1} \det A \det C = \det A \det C \cfrac{1}{\det C} = \det A.
+    \end{gather*}
+    \item
+      \begin{gather*}
+        \tr A' = \tr (C^{-1}AC) = \tr (ACC^{-1}) = \tr A
+      \end{gather*}
+  \end{enumerate}
+\end{proof}
+
+\begin{Def}
+    Две матрицы $A', A \in M_n(F)$ называются подобными, если существует такая матрица $C \in M_n(F), \det C \neq 0$, что $A' = C^{-1}AC$.
+\end{Def}
+
+\begin{Note}
+    Отношение подобия на $M_n$ является отношением эквивалентности. 
+\end{Note}
+
+\begin{Suggestion}
+    Пусть $\phi \in L(V)$. Тогда эти условия эквивалентны:
+    \begin{enumerate}
+        \item $\Ker\phi = \{0\}$;
+        \item $\Im \phi = V$;
+        \item $\phi$ обратим (то есть это биекция, изоморфизм);
+        \item $\det \phi \neq 0$.
+    \end{enumerate}
+\end{Suggestion}
+
+\begin{proof}\ 
+    \begin{enumerate}
+        \item $\Leftrightarrow$ 2 --- следует из формулы $\dim V = \dim \Ker \phi + \dim \Im \phi$.
+        \item $\Leftrightarrow$ 3 --- уже было.
+        \item $\Leftrightarrow$ 4 --- уже было.
+    \end{enumerate}
+\end{proof}
+
+\begin{Def}
+    Линейный оператор $\phi$ называется вырожденным, если $\det \phi = 0$, и невырожденным, если $\det \phi \neq 0$.
+\end{Def}
