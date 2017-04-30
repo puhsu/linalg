@@ -1,0 +1,226 @@
+\section*{Лекция 29}
+\addcontentsline{toc}{section}{\protect\numberline{}Лекция 29}%
+
+$V$ -- векторное пространство над $\F$ $n = \dim V$. Пусть $\lambda \in \Spec \phi$, $m_{\lambda}$ --- кратность $\lambda$ как корня характеристического многочлена: $\chi_{\phi}(t) \vdots (t - \lambda)^{m_{\lambda}}$, но $\chi_{\phi}(t) \not \vdots (t - \lambda)^{m_{\lambda} + 1}$.
+
+\subsection*{Алгебраическая и геометрическая кратности}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Алгебраическая и геометрическая кратности}%
+
+\begin{Def}
+  Число $m_{\lambda}$ называется алгебраической кратностью собственного значения $\lambda$.
+\end{Def}
+
+$\lambda \in \Spec \phi$, $V_{\lambda}(\phi) \subseteq V$ --- собственное подпространство.
+
+\begin{Def}
+  Число $\dim V_{\lambda}(\phi)$ называется геометрической кратностью собственного значения $\lambda$.
+\end{Def}
+
+\begin{Suggestion}
+  Геометрическая кратность не больше алгебраической кратности.
+\end{Suggestion}
+
+\begin{proof}
+  Зафиксируем базис $u_1, \ldots, u_p$ в пространстве $V_\lambda$, где $p = \dim{V_\lambda}$. Дополним базис $u_1, \ldots, u_p$ до базиса $u_1, \ldots, u_p, u_{p+1}, \ldots, u_n$ пространства $V$. Тогда матрица линейного оператора $\phi$ в 
+  этом базисе будет выглядеть следующим образом:
+  \begin{gather*}
+    A_\phi = 
+    \begin{pmatrix*}
+      \begin{array}{c|c}
+        \l E & A \\ \hline
+        0 & B
+      \end{array}
+    \end{pmatrix*}, \quad \lambda E \in M_p,\ A \in M_{n-p}
+  \end{gather*}
+  Тогда характеристический многочлен будет следующим:
+  \begin{gather*}
+    \chi_\phi(t) = (-1)^n \det (A_\phi - tE) = 
+    \begin{vmatrix}
+      \begin{array}{c|c}
+	\begin{matrix}
+          \lambda - t &  & 0 \\
+          & \ddots &  \\
+          0 &  & \lambda - t
+	\end{matrix}
+          & A \\ \hline
+	0 & B - tE
+      \end{array}
+    \end{vmatrix}
+    = (-1)^n(\lambda - t)^p\det(B - tE)
+  \end{gather*}
+
+  Как видим, $\chi_\phi(t)$ имеет корень кратности хотя бы $p$, следовательно, геометрическая кратность, которая равна $p$ по условию, точно не превосходит алгебраическую.
+\end{proof}
+
+Пусть $\{\lambda_1, \ldots, \lambda_s\} \subseteq \Spec \phi, \lambda_i \ne \lambda_j$ при $i \ne j$.
+
+\begin{Suggestion}
+  Подпространства $V_{\lambda_1}(\phi), \ldots, V_{\lambda_s}(\phi)$ линейно независимы.
+\end{Suggestion}
+
+\begin{proof}
+  Индукция по $s$. Для $s = 1$ очевидно. Пусть доказано для меньших $s$, докажем для $s$. Пусть $v_1 \in V_{\lambda_1}, \ldots, v_s \in V_{\lambda_s}$ и
+  \[
+    \tag{$\star$}
+    v_1 + \ldots + v_s = 0 \label{lec29_sug_2_1}
+  \]
+  Тогда применив линейный оператор к обоим частям равенства получим
+  \[
+    \phi(v_1) + \ldots + \phi(v_s) = 0 \Rightarrow \lambda_1 v_1 + \ldots + \lambda_s v_s = 0
+  \]
+  Вычтем отсюда \eqref{lec29_sug_2_1} умноженное на $\lambda_s$:
+  \[
+    (\lambda_1 - \lambda_s)v_1 + \ldots + (\lambda_{s - 1} - \lambda_s)v_{s - 1} = 0
+  \]
+  Так как $\lambda_i \ne \lambda_s$ при $i \ne s$, то по предположению индукции получаем $v_1 = \ldots = v_{s - 1} = 0$. Тогда \eqref{lec29_sug_2_1} влечёт $v_s = 0$.
+\end{proof}
+
+\begin{Consequence}
+  Если характеристический многочлен имеет ровно $n$ попарно различных корней, где $n = \dim V$, то $\phi$ диагонализируем.
+\end{Consequence}
+
+\begin{proof}
+  Пусть $\{\lambda_1, \ldots, \lambda_s\} = \Spec \phi, \lambda_i \ne \lambda_j$ при $i \ne j$. В каждом $V_{\lambda_i}(\phi)$ возьмём ненулевой вектор $v_i$. Тогда по предыдущему предложению, векторы $v_1, \ldots, v_n$ линейно независимы $\Rightarrow (v_1, \ldots, v_n)$~--- базис из собственных векторов $\Rightarrow \phi$ диагонализуем.
+\end{proof}
+
+\subsection*{Критерий диагонализуемости линейного оператора}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Критерий диагонализуемости линейного оператора}%
+
+\begin{Theorem}[Критерий диагонализируемости - 2]
+  Линейный оператор $\phi$ диагонализируем тогда и только тогда, когда 
+  \begin{enumerate}
+  \item $\chi_\phi(t)$ разлагается на линейные множители;
+  \item Для любого собственного значения $\lambda \in \Spec(\phi)$ равны его геометрическая и алгебраическая кратности.
+  \end{enumerate}
+\end{Theorem}
+
+\begin{proof}\
+  \begin{itemize}
+  \item[$\Rightarrow$] Так как $\phi$ --- диагонализируем, то существует базис $\e = (e_1, \ldots, e_n)$ такой, что:
+    \begin{gather*}
+      A(\phi, \e) = 
+      \begin{pmatrix*}
+        \mu_1 & & 0 \\
+        & \ddots & \\
+        0 & & \mu_n
+      \end{pmatrix*} = \diag(\mu_1, \ldots, \mu_n).
+    \end{gather*}
+    Тогда:
+    $$
+    \chi_\phi(t) = (-1)^n 
+    \begin{vmatrix}
+      \mu_1-t & & 0 \\
+      & \ddots & \\
+      0 & & \mu_n-t
+    \end{vmatrix} = (-1)^n(\mu_1 - t)\ldots(\mu_n - t) = (t - \mu_1)\ldots(t-\mu_n).
+    $$
+    Итого, первое условие выполняется.
+
+    Теперь перепишем характеристический многочлен в виде $\chi_\phi(t) = (t - \l_1)^{k_1}\dots(t - \l_s)^{k_s}$, где $\l_i \neq \l_j$ при $i \neq j$ и $\{ \l_1, \ldots, \l_s \} = \{\mu_1, \ldots, \mu_n \}$. Тогда $V_{\l_i} \supseteq \langle e_j \mid \mu_j = \l_i \rangle$, следовательно, $\dim V_{\l_i}(\phi) \geqslant k_i$. Но мы знаем, что $\dim V_{\l_i} \leqslant k_i$! Значит, $\dim V_{\l_i}(\phi) = k_i$.
+
+  \item[$\Leftarrow$] Так как $V_{\l_1}(\phi) + \ldots + V_{\l_s}(\phi)$ --- прямая, то $\dim (V_{\l_1}(\phi) + \ldots + V_{\l_s}(\phi)) = k_1 + \ldots + k_s = n$.
+
+    Пусть $\e_i$ --- базис в $V_{\l_i}$. Тогда $\e_1 \cup \ldots \cup \e_s$ --- базис в $V$. То есть мы нашли базис из собственных векторов, следовательно, $\phi$ диагонализируем.
+  \end{itemize}
+\end{proof}
+
+\begin{Note}
+  Если выполнено только первое условие, то линейный оператор $\phi$ можно привести к Жордановой нормальной форме. Существует базис $\e$, такой что
+  \begin{gather*}
+    A(\phi, \e) = 
+    \begin{pmatrix*}
+      J_{\lambda_1}^{n_1} & 0 & \ldots & 0 \\
+      0 & J_{\lambda_2}^{n_2} & \ldots & 0 \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & \ldots & J_{\lambda_s}^{n_s}
+    \end{pmatrix*}
+  \end{gather*}
+  Где $J_{\lambda_i}^{n_i}$ --- Жорданова клетка
+  \begin{gather*}
+    J_{\lambda_i}^{n_i} = 
+    \begin{pmatrix}
+      \l_i & 1 & 0 & \ldots & 0 & 0 \\
+      0 & \l_i & 1 & \ldots & 0 & 0 \\
+      0 & 0 & \l_i & \ddots & 0 & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \ddots & \vdots \\
+      0 & 0 & 0 & \ldots & \l_i & 1 \\
+      0 & 0 & 0 & \ldots & 0 & \l_i
+    \end{pmatrix} \in M_n(F).
+  \end{gather*}
+  В частности всякий линейный оператор над $\C$ можно привести к Жордановой нормальной форме.
+\end{Note}
+
+\begin{Examples}\ 
+  \begin{enumerate}
+    \setcounter{enumi}{0}
+    \item $\phi = \lambda Id$
+      \[
+        \chi_{\phi}(t) = (-1)^n
+        \begin{vmatrix}
+          \l - 1 & 0 & 0 & \ldots & 0 & 0 \\
+          0 & \l - 1 & 0 & \ldots & 0 & 0 \\
+          0 & 0 & \l - 1 & \ldots & 0 & 0 \\
+          \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+          0 & 0 & 0 & \ldots & \l - 1 & 0 \\
+          0 & 0 & 0 & \ldots & 0 & \l - 1
+        \end{vmatrix}
+      \]
+      $\Spec \phi = \{\lambda\}$, алгебраическая и геометрическая кратности равны $n$.
+    \item $V = \R^2, \phi$ --- ортогональная проекция на прямую $l$. $e_1 \in l, e_2 \in l^{\perp} \ \{0\}$, тогда $(e_1, e_2)$ --- базис из собственных векторов.
+      \[
+        A(\phi, \e) =
+        \begin{pmatrix}
+          1 & 0 \\
+          0 & 0
+        \end{pmatrix}, \chi_{\phi}(t) = (t - 1)t
+      \]
+      \[
+        \Spec\ \phi = \{0, 1\} \Rightarrow \begin{cases}
+          \text{если } 0, \text{то алгебраическая кратность} = \text{геометрическая кратность} = 1 \\
+          \text{если } 1, \text{то алгебраическая кратность} = \text{геометрическая кратность} = 1
+        \end{cases}
+      \]
+
+    \item $V = \R^2, \phi$ --- поворот на угол $\alpha \ne \pi k$. Если $(e_1, e_2)$ --- правый ортонормированный базис, то
+      \[
+        A(\phi, \e) = \begin{pmatrix}
+          \cos \alpha & -\sin \alpha \\
+          \sin \alpha & \cos \alpha
+        \end{pmatrix}
+      \]
+      \[
+        \chi_{\phi}(t) = (-1)^2 \begin{vmatrix}
+          \cos \alpha - t & -\sin \alpha \\
+          \sin \alpha & \cos \alpha - t
+        \end{vmatrix} = t^2 - 2\cos\alpha t + 1
+      \]
+      В данном случае $D < 0$, значит над $\R$ нет корней $\Rightarrow$ оператор не диагонализуем над $\R$. Над $\C\ \chi_{\phi}(t)$ имеет два различных корня, следовательно оператор диагонализуем над $\C$.
+    \item $V = \R[x]_{\leqslant n}, \phi$ --- дифферинцирование. $\e = (1, \frac{x}{1!}, \frac{x^2}{2!}, \ldots, \frac{x^n}{n!})$ --- базис в $V$.
+      \[
+        A(\phi, \e) = J_0^{n + 1} \Rightarrow \chi_{\phi}(t) = t^{n + 1}
+      \]
+      Собственное значение $\lambda = 0$, геометрическая кратность $= 1$, алгебраическая кратность $= n + 1$.
+  \end{enumerate}
+\end{Examples}
+
+\begin{Theorem}
+  Если $F = \R$, то для всякого линейного оператора $\phi \in L(V)$ существует либо одномерное, либо двумерное $\phi$-инвариантное подпространство.
+\end{Theorem}
+
+\begin{proof}
+  $\chi_{\phi}(t)$ имеет действительные корни $\Rightarrow$ есть собственный вектор $\Rightarrow$ есть одномерное $\phi$-инварантное подпространство. Если $\chi_{\phi}(t)$ не имеет действительных корней, пусть $\lambda + i \mu$ --- комплексный корень, $\lambda, \mu \in \R, \mu \ne 0$. Выберем базис в $\e = (e_1, \ldots, e_n)$ в $V$, пусть $A = A(\phi, \e)$. Над $\C$ у $\phi$ есть собственный вектор, следовательно $\exists u \in \R^n$ и $v \in \R^n$, такие что $A(u + iv) = (\lambda + i \mu)(u + iv) = (\lambda u - \mu v) + i(\mu u + \lambda v) = Au + iAv$. Отделяя действительную и мнимую части получаем
+  \[
+    \begin{cases}
+      Au = \lambda u - \mu v \\
+      Av = \mu u + \lambda v
+    \end{cases}
+  \]
+  Пусть $x \in V$ -- вектор с координатами $u$, $y \in V$ -- вектор с координатами $v$, тогда
+  \[
+    \begin{cases}
+      \phi(x) = \lambda x - \mu y \\
+      \phi(y) = \mu x + \lambda y
+    \end{cases} \Rightarrow U = \langle x, y \rangle \text{--- $\phi$-инвариантное подпространство}
+  \]
+  $\dim U \leqslant 2$.
+\end{proof}

@@ -1,6 +1,40 @@
 \section*{Лекция 23}
 \addcontentsline{toc}{section}{\protect\numberline{}Лекция 23}%
 
-$\E$ -- Евклидово пространство, $S \subseteq \E$ -- подпространство, $S = \{x \in \E\ |\ (x, y) = 0\ \forall y \in S\}$.
+$\E$ -- Евклидово пространство, $S \subseteq \E$ -- подпространство, $S^{\perp} = \{x \in \E\ |\ (x, y) = 0\ \forall y \in S\}$.
+\begin{Note}\ 
+  \begin{enumerate}
+    \item $v \in S \iff \pr_S v = v \iff \ort_s v = 0$
+    \item $v \in S^{\perp} \iff \ort_s v = v \iff \pr_s v = 0$
+  \end{enumerate}
+\end{Note}
+Пусть $\E = \R^n$ со стандартным скалярным произведением, $S \in \R^n$ -- подпространство, $(a_1, \ldots, a_k)$ -- базис в $S$. Образуем матрицу $A \in \mathrm{Mat}_{n \times k}(\R)$, где $A^{(i)} = a_i$.
+\begin{Suggestion}
+  Для всякого $v \in \E$ $\pr_S v = A(A^TA)^{-1}A^Tv$.
+  \begin{proof}
+    Корректность $A^TA$, заметим, что $A^TA = ((a_i, a_j)) = G(a_1, \ldots, a_k)$ -- невырожденная, так как $(a_1, \ldots, a_k)$ линейно независимы.
 
+    $v \in \E$,
+    \[
+    x = \pr_S v \Rightarrow x \in S \Rightarrow x = \lambda_1a_1 + \ldots + \lambda_ka_k =
+    A\begin{pmatrix}
+    \lambda_1 \\
+    \vdots \\
+    \lambda_k \\
+    \end{pmatrix} 
+    \]
+
+    \[
+    y = \ort_S v \Rightarrow A^Ty = 0\ \text{так как $y \in S^{\perp}$ и все скалярные произведения $= 0$}
+    \]
+
+    \[
+    A(A^TA)^{-1}A^Tv = A(A^TA)^{-1}A^T(x + y) = A(A^TA)^{-1}A^TA \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_k \end{pmatrix} + A(A^TA)^{-1}A^Ty = A\begin{pmatrix}
+    \lambda_1 \\
+    \vdots \\
+    \lambda_k \\
+    \end{pmatrix} = x
+    \]
+  \end{proof}
+\end{Suggestion}
 
