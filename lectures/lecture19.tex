@@ -1,0 +1,200 @@
+\section*{Лекция 19}
+\addcontentsline{toc}{section}{\protect\numberline{}Лекция 19}%
+\subsection*{Двойственное (сопряжённое) векторное пространство}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Двойственное (сопряжённое) векторное пространство}%
+$V$ --- векторное пространство. Линейная функция на $V$ --- это линейное отображение $\alpha: V \rightarrow \F$.
+
+\begin{Def}
+  $\Hom(V, \F)$ --- двойственное (сопряженное) к $V$ пространство.
+\end{Def}
+
+\begin{Designation}
+  $\Hom(V, \F) = V^{*}$ --- множество всех линейных функций.
+\end{Designation}
+
+\subsubsection*{Из общей теории линейных отображений}
+\begin{enumerate}
+  \item $V^{*} = \Hom(V, \F) \Rightarrow V^{*}$ --- векторное пространство;
+  \item Если $\e = (e_1, \ldots, e_n)$ базис $V$, то имеется изоморфизм $V^{*} \xrightarrow{\sim} \Mat_{1 \times n}(\F)$. Умножение строки на столбец --- реализация вычисления функции на векторе.
+\end{enumerate}
+
+$\alpha \in V^{*}, \alpha \mapsto (\alpha_1, \ldots, \alpha_n)$, где $\alpha_i = \alpha(e_i)$ --- коэффициенты линейной функции $\alpha$ в базисе $\e$.
+\begin{Consequence}[В конечномерном случае]
+  $\dim V^{*} = n = \dim V \Rightarrow V \simeq V^{*}$.
+\end{Consequence}
+
+При $i = 1, \ldots, n$ рассмотрим функцию $\varepsilon_i \in V^{*}$ соответствующую строке $(0, \ldots, 0, 1, 0, \ldots, 0) \in \Mat_{1 \times n}$. Тогда:
+\[
+\varepsilon_i =
+\begin{cases}
+  1, i = j \\
+  0,\ \text{иначе}
+\end{cases}
+= \delta_{ij}
+\]
+$\varepsilon_1, \ldots, \varepsilon_n$ --- базис в $V^{*}$.
+
+\begin{Def}
+  Базис $\varepsilon_1, \ldots, \varepsilon_n$ называется базисом двойственным к базису $\e$. Он однозначно определяется условием (*).
+\end{Def}
+
+\[
+\begin{pmatrix}
+  \varepsilon_1 \\
+  \vdots \\
+  \varepsilon_n
+\end{pmatrix}
+(e_1, \ldots, e_n) = E
+\]
+
+\begin{Suggestion}
+  Всякий базис $\varepsilon = (\varepsilon_1, \ldots, \varepsilon_n)$ пространства $V^*$ двойственен к некоторому базису пространства $V$.
+\end{Suggestion}
+
+\begin{proof}
+  Возьмём произвольный базис $\e'$ пространства $V$. Пусть $\varepsilon' = (\varepsilon_1', \ldots, \varepsilon_n')$ --- двойственный к $\e'$ базис в $V^*$. Тогда:
+  \begin{equation}
+    \begin{pmatrix}
+      \varepsilon_1 \\
+      \vdots \\
+      \varepsilon_n
+    \end{pmatrix}
+    =
+    C
+    \begin{pmatrix}
+      \varepsilon_1' \\
+      \vdots \\
+      \varepsilon_n'
+    \end{pmatrix}
+  \end{equation}
+  для некоторой невырожденной матрицы $C \in M_n$ (координаты в матрице записаны по строкам).
+  Положим $\e = (e_1', \ldots, e_n')C^{-1}$ --- некий базис в $V$. Имеем:
+  \begin{equation}
+    \begin{pmatrix}
+      \varepsilon_1 \\
+      \vdots \\
+      \varepsilon_n
+    \end{pmatrix}
+    (e_1, \ldots, e_n) =
+    C
+    \begin{pmatrix}
+      \varepsilon_1' \\
+      \vdots \\
+      \varepsilon_n'
+    \end{pmatrix}
+    (e_1', \ldots, e_n')C^{-1} = CEC^{-1} = E
+  \end{equation}
+
+\end{proof}
+
+\begin{Statement}
+  $V = \F^n$. Множество решений некоторой ОСЛУ является подрпространством в $\F^n$.
+\end{Statement}
+
+\begin{Theorem}
+  Всякое подпространство в $\F^n$ есть множество решений некоторой ОСЛУ.
+\end{Theorem}
+\begin{proof}
+  Пусть дано подпространство $U$ в $\F^n$. Выберем в нём базис $(v_1, \ldots, v_k)$. Рассмотрим в $(\F^n)^*$ подмножество $S \defeq \{\alpha \in (\F^n)^*\ |\ \alpha(v_1) = 0, \ldots, \alpha(v_k) = 0\}$. $S$ --- подпространство в $(\F^n)^*$, $S$ --- множество решений ОСЛУ:
+  \begin{equation}
+    \begin{cases}
+      \alpha(v_1) = 0 \\
+      \vdots \\
+      \alpha(v_k) = 0
+    \end{cases}
+  \end{equation}
+  на коэффициенты $\alpha$.
+
+  Так как $v_1, \ldots, v_k$ линейно независимы, то ранг матрицы коэффициентов равен $k \Rightarrow \dim S = n - k$. Выберем в $S$ базис $\alpha_1, \ldots, \alpha_{n - k}$ и рассмотрим ОСЛУ:
+  \begin{equation}
+    \begin{cases}
+      \alpha_1(x) = 0 \\
+      \vdots \\
+      \alpha_{n - k}(x) = 0
+    \end{cases}
+  \end{equation}
+  относительно неизвестного вектора $x \in \F^n$.
+
+  Пусть $U' \subseteq F^n$ --- подпространство решений этой ОСЛУ. Ранг матрицы коэффициентов равен $n - k \Rightarrow \dim U' = n - n + k = k$, но $U \subseteq U'$ по построению. Так как $\dim U = \dim U' = k$, то $U = U'$.
+\end{proof}
+
+\subsection*{Билинейные функции (формы) на векторном пространстве}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Билинейные функции (формы) на векторном пространстве}%
+\begin{Def}
+  Билинейная форма (функция) на $V$ --- это отображение $\beta: V \times V \rightarrow \F$, линейное по каждому аргументу.
+  \begin{enumerate}
+    \item $\beta(x_1 + x_2, y) = \beta(x_1, y) + \beta(x_2, y)$
+    \item $\beta(\alpha x, y) = \alpha \beta(x, y)$
+    \item $\beta(x, y_1 + y_2) = \beta(x, y_1) + \beta(x, y_2)$
+    \item $\beta(x, \alpha y) = \alpha \beta(x, y)$
+  \end{enumerate}
+\end{Def}
+
+\begin{Examples}\
+\begin{enumerate}
+\item $V = \R^n,\ \beta(x, y) = \langle x, y \rangle$ --- скалярное произведение. 
+\item $V = \R^2,\ \beta(x, y) = \begin{vmatrix}x_1 & y_1 \\ x_2 & y_2\end{vmatrix}$.
+\item $V = C[a, b],\ \beta(f, g) = \int_a^bf(x)g(x)dx$.
+\end{enumerate}
+\end{Examples}
+
+\begin{Def}
+Матрицей билинейной функции в базисе $\e$ называется матрица $B = (b_{ij})$, где $b_{ij} = \beta(e_i, e_j)$. Обозначение: $B(\beta, \e)$.
+\end{Def}
+
+Пусть $x = x_1e_1 + \ldots + x_ne_n \in V$ и $y = y_1e_1 + \ldots + y_ne_n \in V$. Тогда:
+\begin{gather*}
+\beta(x, y) = \beta\left(\sum_{i = 1}^{n}x_ie_i, \sum_{j = 1}^{n}y_je_j\right) = \sum_{i = 1}^{n} x_i\beta\left(e_i, \sum_{j = 1}^{n}y_je_j\right) = \\
+= \sum_{i = 1}^{n}x_i\sum_{j = 1}^{n}y_j\beta(e_i, e_j) = \sum_{i = 1}^{n}\sum_{j = 1}^{n}x_ib_{ij}y_j = \\
+= (x_1, \ldots, x_n)B \vvector{y} \quad (*)
+\end{gather*}
+
+\begin{Suggestion}\
+\begin{enumerate}
+\item Всякая билинейная функция однозначно определяется своей матрицей в базисе $\e$ (и, следовательно, в любом другом базисе).
+\item Для любой матрицы $B \in M_n(F)$ существует единственная билинейная функция $\beta$ такая, что $B = B(\beta, \e)$.
+\end{enumerate}
+\end{Suggestion}
+
+\begin{proof}\
+\begin{enumerate}
+\item Уже доказано, это следует из формулы $(*)$.
+\item Определим $\beta$ по формуле $(*)$. Тогда $\beta$ --- это билинейная функция на $V$ и ее матрица есть в точности $B$. Единственность следует из все той же формулы.
+\end{enumerate}
+\end{proof}
+
+Пусть $\e = (e_1, \ldots, e_n)$ и $\e' = (e'_1, \ldots, e'_n)$ --- два базиса $V$, $\beta$ --- билинейная функция на $V$. Пусть также $\e' = \e C$, где $C$ --- матрица перехода, также $B(\beta, \e) = B$ и $B(\beta, \e') = B'$.
+
+\begin{Suggestion}
+$B' = C^TBC$.
+\end{Suggestion}
+
+\begin{proof}
+Рассмотрим представление вектора $x \in V$ в обоих базисах.
+\begin{gather*}
+\begin{aligned}
+x = x_1e_1 + \ldots + x_ne_n = (e_1, \ldots, e_n)\vvector{x} \\
+x = x'_1e'_1 + \ldots + x'_ne'_n = (e'_1, \ldots, e'_n) \vvector{x'}
+\end{aligned}
+\Longrightarrow
+\vvector{x} = C\vvector{x'}
+\end{gather*}
+Аналогично для $y \in V$:
+\begin{gather*}
+\begin{aligned}
+y = (e_1, \ldots, e_n)\vvector{y} \\
+y = (e'_1, \ldots, e'_n) \vvector{y'}
+\end{aligned}
+\Longrightarrow
+\vvector{y} = C\vvector{y'}.
+\end{gather*}
+Тогда,  если мы транспонируем формулу для $x$, получаем:
+$$
+\beta(x, y) = \vector{x}B\vvector{y} = \vector{x'}C^TBC\vvector{y'}.
+$$
+Одновременно с этим:
+$$
+\beta(x, y) = \vector{x'}B'\vvector{y'}.
+$$
+Сравнивая эти две формулы, получаем, что $B' = C^TBC$.
+\end{proof}
